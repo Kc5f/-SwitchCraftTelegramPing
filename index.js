@@ -6,7 +6,11 @@ const ws = new WebSocket(`wss://chat.switchcraft.pw/${config.chatboxtoken}`);
 
 ws.on('message', async (data) => {
     data = JSON.parse(data.toString());
-    console.log(data);
+    
+    if (data.type == 'hello') {
+        console.log('Listening for messages!');
+    };
+
     if (data.type == 'message' && data.text.toLowerCase().includes(config.myname)) {
         let channelType;
         let username;
@@ -17,9 +21,7 @@ ws.on('message', async (data) => {
             channelType = 'In-game';
             username = data.user.name;
         };
-        console.log(channelType, username, data.text)
         const message = encodeURIComponent(`Mention from \`${channelType}\`/\`${username}\`:\n\`${data.text}\``);
-        console.log(message);
         axios.post(`https://api.telegram.org/bot${config.telegramtoken}/sendMessage?chat_id=${config.telegramid}&text=${message}&parse_mode=MarkdownV2`).catch((err) => {
             console.log(err);
         });
