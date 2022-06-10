@@ -1,0 +1,22 @@
+{
+  "name": "chatboxnotifier",
+  "version": "1.0.0",
+  "description": "An easy dockerized way to get notified when people mention you",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "ws": "^8.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.meltdownpowered.com/Kc5f/SwitchCraftTelegramPing.git"
+  },
+  "keywords": [
+    "switchcraft"
+  ],
+  "author": "Kc5f"
+}
